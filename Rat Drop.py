@@ -9,19 +9,19 @@ height = 600
 size = (width, height)
 black = (0,0,0)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Chicken Click Game")
+pygame.display.set_caption("Rat Click Game")
 
-chicken = pygame.image.load("chicken.png")
+Rat = pygame.image.load("Rat.png")
 
 iterator = 0
-numofchickens = 5
+numofRats = 5
 startX = []
 startY = []
 speed = []
 
-while iterator < numofchickens:
-  startX.append(random.randint(0, width - chicken.get_width() + 1))
-  startY.append(0 - random.randint(chicken.get_height(), chicken.get_height() * 2))
+while iterator < numofRats:
+  startX.append(random.randint(0, width - Rat.get_width() + 1))
+  startY.append(0 - random.randint(Rat.get_height(), Rat.get_height() * 2))
   speed.append(0.5)
   iterator += 1
 
@@ -46,24 +46,24 @@ while gameover == False:
     if event.type == pygame.QUIT:
       gameover = True
 
-  #Clicking on the Chickens
+  #Clicking on the Rats
   if pygame.mouse.get_pressed()[0]:
     coords = pygame.mouse.get_pos()
     if replayscreen == False:
       iterator = 0
-      while iterator < numofchickens:
-        if coords[0] >= startX[iterator] and coords[0] <= startX[iterator] + chicken.get_width() and coords[1] > startY[iterator] and coords[1] < startY[iterator] + chicken.get_height():
-          startX[iterator] =  random.randint(0, width - chicken.get_width() + 1)
-          startY[iterator] = 0 - random.randint(chicken.get_height(), chicken.get_height() * 2)
+      while iterator < numofRats:
+        if coords[0] >= startX[iterator] and coords[0] <= startX[iterator] + Rat.get_width() and coords[1] > startY[iterator] and coords[1] < startY[iterator] + Rat.get_height():
+          startX[iterator] =  random.randint(0, width - Rat.get_width() + 1)
+          startY[iterator] = 0 - random.randint(Rat.get_height(), Rat.get_height() * 2)
           speed[iterator] = 0.5
           break
         iterator += 1
     else:
       if coords[0] > yesx and coords[0] < yesx + yestext.get_rect().width and coords[1] > 450 and coords[1] < 450 + yestext.get_rect().height:
         iterator = 0
-        while iterator < numofchickens:
-          startX[iterator] =  random.randint(0, width - chicken.get_width() + 1)
-          startY[iterator] = 0 - random.randint(chicken.get_height(), chicken.get_height() * 2)
+        while iterator < numofRats:
+          startX[iterator] =  random.randint(0, width - Rat.get_width() + 1)
+          startY[iterator] = 0 - random.randint(Rat.get_height(), Rat.get_height() * 2)
           speed[iterator] = 0.5
           iterator +=1
         replayscreen = False
@@ -76,8 +76,8 @@ while gameover == False:
   if replayscreen == False:
     iterator = 0
     #Game over
-    while iterator < numofchickens:
-      if startY[iterator] + chicken.get_height() > height:
+    while iterator < numofRats:
+      if startY[iterator] + Rat.get_height() > height:
         replayscreen = True
         break
       startY[iterator] += speed[iterator]
@@ -89,8 +89,8 @@ while gameover == False:
   if replayscreen == False:
     screen.fill(black)
     iterator = 0
-    while iterator < numofchickens:
-      screen.blit(chicken, (startX[iterator], startY[iterator]))
+    while iterator < numofRats:
+      screen.blit(Rat, (startX[iterator], startY[iterator]))
       iterator += 1
 
     iterator = 0
