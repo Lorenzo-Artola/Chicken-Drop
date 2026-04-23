@@ -25,6 +25,20 @@ while iterator < numofRats:
   speed.append(0.5)
   iterator += 1
 
+  # -------------------------
+# POWER-UP SETUP
+# -------------------------
+powerup = pygame.Surface((60, 60))
+powerup.fill((0, 0, 255))  # Blue square
+powerup_x = width - 120
+powerup_y = 40
+powerup_active = True
+
+def increase_speed():
+    for i in range(numofRats):
+        speed[i] += 1.8 #custom speed increase value
+# -------------------------
+
 replayscreen = False
 #Set up game over stuff
 bigfont = pygame.font.SysFont(None, 200)
