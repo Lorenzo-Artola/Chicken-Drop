@@ -11,7 +11,10 @@ black = (0,0,0)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Rat Click Game")
 
-Rat = pygame.image.load("Rat.png")
+Rat = pygame.image.load("Rat copy.png")
+rat_width = Rat.get_width()
+rat_height = Rat.get_height()
+max_x = max(0, width - rat_width)
 
 iterator = 0
 numofRats = 5
@@ -20,8 +23,8 @@ startY = []
 speed = []
 
 while iterator < numofRats:
-  startX.append(random.randint(0, width - Rat.get_width() + 1))
-  startY.append(0 - random.randint(Rat.get_height(), Rat.get_height() * 2))
+  startX.append(random.randint(0, max_x))
+  startY.append(-random.randint(rat_height, rat_height * 2))
   speed.append(0.5)
   iterator += 1
 
@@ -67,8 +70,8 @@ while gameover == False:
       iterator = 0
       while iterator < numofRats:
         if coords[0] >= startX[iterator] and coords[0] <= startX[iterator] + Rat.get_width() and coords[1] > startY[iterator] and coords[1] < startY[iterator] + Rat.get_height():
-          startX[iterator] =  random.randint(0, width - Rat.get_width() + 1)
-          startY[iterator] = 0 - random.randint(Rat.get_height(), Rat.get_height() * 2)
+          startX[iterator] =  random.randint(0, max_x)
+          startY[iterator] = 0 - random.randint(rat_height, rat_height * 2)
           speed[iterator] = 0.5
           break
         iterator += 1
@@ -76,8 +79,8 @@ while gameover == False:
       if coords[0] > yesx and coords[0] < yesx + yestext.get_rect().width and coords[1] > 450 and coords[1] < 450 + yestext.get_rect().height:
         iterator = 0
         while iterator < numofRats:
-          startX[iterator] =  random.randint(0, width - Rat.get_width() + 1)
-          startY[iterator] = 0 - random.randint(Rat.get_height(), Rat.get_height() * 2)
+          startX[iterator] =  random.randint(0, max_x)
+          startY[iterator] = 0 - random.randint(rat_height, rat_height * 2)
           speed[iterator] = 0.5
           iterator +=1
         replayscreen = False
