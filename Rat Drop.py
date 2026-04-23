@@ -26,21 +26,21 @@ speed = []
 while iterator < numofRats:
     startX.append(random.randint(0, width - Rat.get_width()))
     startY.append(0 - random.randint(Rat.get_height(), Rat.get_height() * 2))
-    speed.append(0.5)
+    speed.append(1.0)
     iterator += 1
 
 # -------------------------
 # POWER-UP SETUP
 # -------------------------
-powerup = pygame.Surface((60, 60))
-powerup.fill((0, 0, 255))  # Blue square
-powerup_x = width - 120
-powerup_y = 40
+powerup = pygame.image.load("power up.png")  # Load your PNG file
+powerup = pygame.transform.scale(powerup, (60, 60))    # Scale to desired size
+powerup_x = width - 100
+powerup_y = height - 100
 powerup_active = True
 
 def increase_speed():
     for i in range(numofRats):
-        speed[i] += 1.8 #custom speed increase value
+        speed[i] += 3.0 #custom speed increase value
 # -------------------------
 
 replayscreen = False
@@ -58,6 +58,9 @@ nox = width - width/4 - yestext.get_rect().width/2
 
 #Game Loop
 gameover = False
+
+clock = pygame.time.Clock()
+FPS = 60 # Control how many frames per second
 
 while gameover == False:
     for event in pygame.event.get():
@@ -137,5 +140,6 @@ while gameover == False:
         screen.blit(notext, (nox, 450))
 
     pygame.display.flip()
+    clock.tick(FPS)
 
 pygame.display.quit()
